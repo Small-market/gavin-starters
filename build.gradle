@@ -1,0 +1,192 @@
+// 针对多模块 打包的策略
+buildscript {
+    // 自定义参数
+    ext {
+        // 具体版本依赖可以去 https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E 找相应的版本
+        springBootVersion = '2.3.12.RELEASE'
+        springCloudVersion = 'Hoxton.SR12'
+        springCloudAlibabaVersion = "2.2.7.RELEASE"
+    }
+
+    // 项目仓库设置
+    repositories {
+        // 优先使用本地 mavene 仓库
+        mavenLocal()
+        // 阿里云 central 仓和 jcenter 仓的聚合仓
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        // 阿里云 gradle 插件仓库
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+        // 阿里云 spring 代理仓库
+        maven { url 'https://maven.aliyun.com/repository/spring/' }
+        // 自己的生产库maven仓库
+        maven {
+            credentials {
+                username '61ce7cfea96ac5d9b038f98c'
+                password 'Ywnuvi=(4e9d'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2173289-release-vctkTy/'
+        }
+        // 自己的开发版库maven仓库
+        // maven {
+        //     credentials {
+        //         username '61ce7cfea96ac5d9b038f98c'
+        //         password 'Ywnuvi=(4e9d'
+        //     }
+        //     url 'https://packages.aliyun.com/maven/repository/2173289-snapshot-g5yEdX/'
+        // }
+        // 中央maven仓库
+        mavenCentral()
+    }
+
+    // springboot gradle 打包插件依赖
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+//描述
+
+// 所有项目配置
+allprojects {
+    // 项目信息
+    group 'com.gavin.framework'
+    // 版本
+    version = '0.0.1-SNAPSHOT'
+}
+
+// 子项目设置
+subprojects {
+    // maven发布的gradle插件
+    apply plugin: 'maven-publish'
+    // java增强
+    apply plugin: 'java-library'
+    // springboot插件
+    apply plugin: 'org.springframework.boot'
+    // spring依赖管理插件
+    apply plugin: 'io.spring.dependency-management'
+
+    // 项目仓库设置
+    repositories {
+        // 优先使用本地 mavene 仓库
+        mavenLocal()
+        // 阿里云 central 仓和 jcenter 仓的聚合仓
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        // 阿里云 gradle 插件仓库
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+        // 阿里云 spring 代理仓库
+        maven { url 'https://maven.aliyun.com/repository/spring/' }
+        // 自己的生产库maven仓库
+        maven {
+            credentials {
+                username '61ce7cfea96ac5d9b038f98c'
+                password 'Ywnuvi=(4e9d'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2173289-release-vctkTy/'
+        }
+        // 自己的开发版库maven仓库
+        // maven {
+        //     credentials {
+        //         username '61ce7cfea96ac5d9b038f98c'
+        //         password 'Ywnuvi=(4e9d'
+        //     }
+        //     url 'https://packages.aliyun.com/maven/repository/2173289-snapshot-g5yEdX/'
+        // }
+        // 中央maven仓库
+        jcenter()
+        mavenCentral()
+    }
+
+    // 指定编码格式 第一种方法
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    // 依赖范围配置修改
+    configurations {
+        // 修改annotationProcessor 使其可以继承
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    // 将子项目打成jar包
+    jar {
+        enabled true
+    }
+
+
+    // 子项目管理依赖
+    dependencyManagement {
+        imports {
+            // Spring-Cloud 依赖
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            // Spring-Alibaba 依赖
+            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+        }
+        // 子项目管理依赖
+        dependencies {
+            dependency("org.springframework.boot:spring-boot-starter-web:${springBootVersion}") {
+                exclude "org.springframework.boot:spring-boot-starter-tomcat"
+            }
+        }
+    }
+
+    // 全局依赖
+    dependencies {
+        // 注解依赖
+        annotationProcessor(
+                // 配置文件解析
+                'org.springframework.boot:spring-boot-configuration-processor',
+                // lombok 简化开发
+                'org.projectlombok:lombok'
+        )
+
+        // 测试依赖
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+    }
+
+
+    // 定义您的源文件应该被视为哪种语言版本的 Java。
+    sourceCompatibility = JavaVersion.VERSION_11
+    // 定义您的代码应该运行的最低 JVM 版本，即它确定编译器生成的字节码版本。
+    targetCompatibility = JavaVersion.VERSION_11
+
+    // 发布项目到私有maven仓库
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                versionMapping {
+                    usage('java-api') {
+                        fromResolutionOf('runtimeClasspath')
+                    }
+                    usage('java-runtime') {
+                        fromResolutionResult()
+                    }
+                }
+            }
+        }
+
+        // 私有仓库仓库地址
+        repositories {
+            maven {
+                // change URLs to point to your repos, e.g. http://my.org/repo
+                def releasesRepoUrl = 'https://packages.aliyun.com/maven/repository/2173289-release-vctkTy/'
+                def snapshotsRepoUrl = 'https://packages.aliyun.com/maven/repository/2173289-snapshot-g5yEdX/'
+                url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+                credentials {
+                    username = '61ce7cfea96ac5d9b038f98c'
+                    password = 'Ywnuvi=(4e9d'
+                }
+            }
+        }
+    }
+
+
+    // 测试配置
+    test {
+        useJUnitPlatform()
+    }
+}

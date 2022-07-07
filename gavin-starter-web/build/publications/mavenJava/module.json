@@ -1,0 +1,61 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.gavin.framework",
+    "module": "gavin-starter-web",
+    "version": "0.0.1-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.8",
+      "buildId": "wkjge5ibhnfo5ffxerekkkzcau"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "gavin-starter-web-0.0.1-SNAPSHOT.jar",
+          "url": "gavin-starter-web-0.0.1-SNAPSHOT.jar",
+          "size": 952,
+          "sha512": "1cdabfd1fadb0528618bca86891f9e1fae5704504dc326e4e88aad89fd013ec42e575fc3800e43df8ef47c5866b76d5e7cee7fb5c4c8d0c2454f60ba67e2008d",
+          "sha256": "f4f7c9f78e6001077a008d067e00785feb13006948f052d7eeb8e3e9652dc089",
+          "sha1": "3c6c088ae22d3d02dd8e5bad04ad032f223bf6d3",
+          "md5": "20afdbc3de26654437c69f4df535ed23"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "gavin-starter-web-0.0.1-SNAPSHOT.jar",
+          "url": "gavin-starter-web-0.0.1-SNAPSHOT.jar",
+          "size": 952,
+          "sha512": "1cdabfd1fadb0528618bca86891f9e1fae5704504dc326e4e88aad89fd013ec42e575fc3800e43df8ef47c5866b76d5e7cee7fb5c4c8d0c2454f60ba67e2008d",
+          "sha256": "f4f7c9f78e6001077a008d067e00785feb13006948f052d7eeb8e3e9652dc089",
+          "sha1": "3c6c088ae22d3d02dd8e5bad04ad032f223bf6d3",
+          "md5": "20afdbc3de26654437c69f4df535ed23"
+        }
+      ]
+    }
+  ]
+}

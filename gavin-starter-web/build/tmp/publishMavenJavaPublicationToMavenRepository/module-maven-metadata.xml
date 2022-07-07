@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.gavin.framework</groupId>
+  <artifactId>gavin-starter-web</artifactId>
+  <versioning>
+    <latest>0.0.1-SNAPSHOT</latest>
+    <versions>
+      <version>0.0.1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20220706063920</lastUpdated>
+  </versioning>
+</metadata>

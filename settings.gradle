@@ -1,0 +1,3 @@
+rootProject.name = 'gavin-starters'
+include 'gavin-starter-web'
+
