@@ -1,0 +1,7 @@
+dependencies {
+    api(
+
+            "com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery",
+            "com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config"
+    )
+}

@@ -5,9 +5,15 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.3.12.RELEASE/36c6cbb35ca07dc8810e913edfe045d8f89a303d/spring-boot-configuration-processor-2.3.12.RELEASE.jar" />
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
+          <entry name="$PROJECT_DIR$/../../../../../JAVA/GRADLE/Repository/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.3.12.RELEASE/36c6cbb35ca07dc8810e913edfe045d8f89a303d/spring-boot-configuration-processor-2.3.12.RELEASE.jar" />
+          <entry name="$PROJECT_DIR$/../../../../../JAVA/GRADLE/Repository/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
         </processorPath>
+        <module name="gavin-starters.gavin-starter-aop.main" />
+        <module name="gavin-starters.gavin-starter-core.main" />
+        <module name="gavin-starters.gavin-starter-dependencies.main" />
+        <module name="gavin-starters.gavin-starter-log.main" />
+        <module name="gavin-starters.gavin-starter-validation.main" />
+        <module name="gavin-starters.gavin-starter-nacos.main" />
         <module name="gavin-starters.gavin-starter-web.main" />
       </profile>
     </annotationProcessing>

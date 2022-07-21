@@ -1,0 +1,15 @@
+
+
+dependencies {
+    api(
+            project(":gavin-starter-core")
+    )
+    implementation(
+            'org.springframework.boot:spring-boot-starter-aop',
+            'org.springframework.boot:spring-boot-starter-undertow',
+            'com.github.xiaoymin:knife4j-spring-boot-starter:3.0.3',
+            'cn.hutool:hutool-all:5.8.4',
+            'org.springframework.boot:spring-boot-starter-json'
+    )
+}
+

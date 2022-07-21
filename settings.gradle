@@ -1,3 +1,9 @@
 rootProject.name = 'gavin-starters'
 include 'gavin-starter-web'
+include 'gavin-starter-nacos'
+include 'gavin-starter-log'
+include 'gavin-starter-core'
+include 'gavin-starter-dependencies'
+include 'gavin-starter-validation'
+include 'gavin-starter-aop'
 

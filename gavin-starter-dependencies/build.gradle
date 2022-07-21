@@ -1,0 +1,13 @@
+// 子项目管理依赖
+dependencyManagement {
+    // 子项目管理依赖
+    dependencies {
+        // 公共依赖
+        dependency "com.gavin.framework:gavin-starter-core:${version}"
+        dependency "com.gavin.framework:gavin-starter-web:${version}"
+        dependency "com.gavin.framework:gavin-starter-log:${version}"
+        dependency "com.gavin.framework:gavin-starter-nacos:${version}"
+        dependency "com.gavin.framework:gavin-starter-aop:${version}"
+        dependency "com.gavin.framework:gavin-starter-validation:${version}"
+    }
+}

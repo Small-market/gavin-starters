@@ -1,15 +1,10 @@
 // 项目依赖
 dependencies {
-    // web 开发
-    api("org.springframework.boot:spring-boot-starter-web") {
-        exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
-    }
     // undertow 用于替代 tomacat
     api(
+            "org.springframework.boot:spring-boot-starter-web",
             "org.springframework.boot:spring-boot-starter-undertow",
-            "org.springframework.boot:spring-boot-starter-aop",
-            "org.springframework.boot:spring-boot-starter-validation",
+            "org.jboss.xnio:xnio-nio"
     )
-
 }
 
