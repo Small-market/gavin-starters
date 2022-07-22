@@ -1,5 +1,7 @@
 package com.gavin.framework.utils;
 
+import com.gavin.framework.constant.CharConstant;
+
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -26,6 +28,11 @@ public class IPUtil {
           "REMOTE_ADDR",
           "X-Real-IP"};
 
+  private static final String[] LOCALHOST_ADDRESS = {
+          "localhost",
+          "127.0.0.1",
+          "0:0:0:0:0:0:0:1"};
+
   /**
    * 获取ip地址
    */
@@ -40,22 +47,24 @@ public class IPUtil {
     if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
       ip = request.getRemoteAddr();
     }
-    // 本机访问
-    if ("localhost".equalsIgnoreCase(ip) || "127.0.0.1".equalsIgnoreCase(ip) || "0:0:0:0:0:0:0:1".equalsIgnoreCase(ip)) {
-      // 根据网卡取本机配置的IP
-      InetAddress inet;
-      try {
-        inet = InetAddress.getLocalHost();
-        ip = inet.getHostAddress();
-      } catch (UnknownHostException e) {
-        e.printStackTrace();
+    for (String localhostAddress : LOCALHOST_ADDRESS) {
+      if (localhostAddress.equalsIgnoreCase(ip)) {
+        // 根据网卡取本机配置的IP
+        InetAddress inet;
+        try {
+          inet = InetAddress.getLocalHost();
+          ip = inet.getHostAddress();
+        } catch (UnknownHostException e) {
+          e.printStackTrace();
+        }
+        break;
       }
     }
 
     // 对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
     if (null != ip && ip.length() > 15) {
-      if (ip.indexOf(",") > 15) {
-        ip = ip.substring(0, ip.indexOf(","));
+      if (ip.indexOf(CharConstant.COMMA) > 15) {
+        ip = ip.substring(0, ip.indexOf(CharConstant.COMMA));
       }
     }
 

@@ -1,4 +1,7 @@
 dependencies {
+    api(
+            'cn.hutool:hutool-all'
+    )
     implementation(
             'org.springframework.boot:spring-boot-starter-undertow'
     )

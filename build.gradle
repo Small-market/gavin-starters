@@ -27,6 +27,7 @@ buildscript {
         forestVersion = '1.5.24'
         ttlVersion = '2.12.4' // ThreadLocal 工具
         jwtVersion = '9.15.2' // jwt 工具
+        ip2regionVersion = '2.0.0.RELEASE' // IP地址工具
 
 
         // 安全相关依赖
@@ -34,8 +35,6 @@ buildscript {
 
         // 接口文档依赖
         knife4jVersion = '3.0.3' // 接口文档
-        swaggerVersion = '1.5.22' // 接口文档
-        swaggerV3Version = '2.1.2' // 接口文档
 
         // 监控
         adminVersion = '2.3.0'
@@ -150,7 +149,6 @@ subprojects {
         enabled true
     }
 
-
     // 子项目管理依赖
     dependencyManagement {
         imports {
@@ -161,9 +159,6 @@ subprojects {
         }
         // 子项目管理依赖
         dependencies {
-            dependency "com.gavin.framework:gavin.starter-web:${project.version}"
-
-
             dependency("org.springframework.boot:spring-boot-starter-web:${springBootVersion}") {
                 exclude "org.springframework.boot:spring-boot-starter-tomcat"
             }
@@ -192,6 +187,7 @@ subprojects {
             dependency "com.dtflys.forest:forest-spring-boot-starter:${forestVersion}"
             dependency "com.alibaba:transmittable-thread-local:${ttlVersion}"
             dependency "com.nimbusds:nimbus-jose-jwt:${jwtVersion}"
+            dependency "com.github.hiwepy:ip2region-spring-boot-starter:${ip2regionVersion}"
 
             // jasypt 安全加密
             dependency "com.github.ulisesbocchio:jasypt-spring-boot-starter:${jasyptVersion}"
@@ -199,8 +195,8 @@ subprojects {
             // knife4j swagger接口
             dependency "com.github.xiaoymin:knife4j-spring-boot-starter:${knife4jVersion}"
             dependency "com.github.xiaoymin:knife4j-micro-spring-boot-starter:${knife4jVersion}"
-            dependency "io.swagger:swagger-annotations:${swaggerVersion}"
-            dependency "io.swagger.core.v3:swagger-annotations:${swaggerV3Version}"
+            dependency "com.github.xiaoymin:knife4j-annotations:${knife4jVersion}"
+
 
             // spring admin 监控
             dependency "de.codecentric:spring-boot-admin-starter-server:${adminVersion}"

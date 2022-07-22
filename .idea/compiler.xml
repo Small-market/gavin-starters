@@ -13,6 +13,8 @@
         <module name="gavin-starters.gavin-starter-dependencies.main" />
         <module name="gavin-starters.gavin-starter-log.main" />
         <module name="gavin-starters.gavin-starter-validation.main" />
+        <module name="gavin-starters.gavin-starter-ip2region.main" />
+        <module name="gavin-starters.gavin-starter-json.main" />
         <module name="gavin-starters.gavin-starter-nacos.main" />
         <module name="gavin-starters.gavin-starter-web.main" />
       </profile>

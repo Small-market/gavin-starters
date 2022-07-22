@@ -6,4 +6,6 @@ include 'gavin-starter-core'
 include 'gavin-starter-dependencies'
 include 'gavin-starter-validation'
 include 'gavin-starter-aop'
+include 'gavin-starter-json'
+include 'gavin-starter-ip2region'
 

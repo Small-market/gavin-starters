@@ -15,4 +15,5 @@ public class LogAutoConfiguration {
   public WebLogAspect webLogAspect(ObjectMapper json) {
     return new WebLogAspect(json);
   }
+
 }

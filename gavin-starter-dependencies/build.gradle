@@ -9,5 +9,7 @@ dependencyManagement {
         dependency "com.gavin.framework:gavin-starter-nacos:${version}"
         dependency "com.gavin.framework:gavin-starter-aop:${version}"
         dependency "com.gavin.framework:gavin-starter-validation:${version}"
+        dependency "com.gavin.framework:gavin-starter-json:${version}"
+        dependency "com.gavin.framework:gavin-starter-ip2region:${version}"
     }
 }

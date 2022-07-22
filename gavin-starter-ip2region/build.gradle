@@ -1,0 +1,5 @@
+dependencies {
+    api(
+            "com.github.hiwepy:ip2region-spring-boot-starter"
+    )
+}

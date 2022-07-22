@@ -2,6 +2,7 @@
 dependencies {
     // undertow 用于替代 tomacat
     api(
+            project(":gavin-starter-json"),
             "org.springframework.boot:spring-boot-starter-web",
             "org.springframework.boot:spring-boot-starter-undertow",
             "org.jboss.xnio:xnio-nio"

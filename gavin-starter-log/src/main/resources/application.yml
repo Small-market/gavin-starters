@@ -1,0 +1,3 @@
+#tlog:
+#  pattern: [$preApp][$preIp][$spanId][$traceId]
+#  enable-invoke-time-print: true
